@@ -16,12 +16,11 @@ import javax.swing.JComponent
 class MagmaSettingsConfigurable : Configurable {
 
     private val interpreterField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Select Magma Executable",
-            "Path to the magma binary",
             null,
-            FileChooserDescriptorFactory.createSingleFileDescriptor(),
+            FileChooserDescriptorFactory.createSingleFileDescriptor()
+                .withTitle("Select Magma Executable")
+                .withDescription("Path to the magma binary"),
         )
     }
     private val wslCombo: JComboBox<String> = JComboBox<String>().apply {
@@ -31,12 +30,11 @@ class MagmaSettingsConfigurable : Configurable {
     private val threadsField = JBTextField()
     private val seedField = JBTextField()
     private val startupFileField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Select Magma Startup File",
-            "Magma script to run before user code (-s)",
             null,
-            FileChooserDescriptorFactory.createSingleFileDescriptor(),
+            FileChooserDescriptorFactory.createSingleFileDescriptor()
+                .withTitle("Select Magma Startup File")
+                .withDescription("Magma script to run before user code (-s)"),
         )
     }
     private val ignoreStartupBox = JBCheckBox("Ignore startup file (-n)")

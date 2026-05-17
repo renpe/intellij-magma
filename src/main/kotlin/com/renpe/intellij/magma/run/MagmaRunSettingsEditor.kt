@@ -16,31 +16,28 @@ import javax.swing.JComponent
 class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<MagmaRunConfiguration>() {
 
     private val scriptField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Magma Script",
-            "Select the .m / .mag / .magma file to run",
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor(),
+            FileChooserDescriptorFactory.createSingleFileDescriptor()
+                .withTitle("Magma Script")
+                .withDescription("Select the .m / .mag / .magma file to run"),
         )
     }
     private val scriptArgsField = JBTextField()
     private val workingDirField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Working Directory",
-            "Leave blank to use the script's directory",
             project,
-            FileChooserDescriptorFactory.createSingleFolderDescriptor(),
+            FileChooserDescriptorFactory.createSingleFolderDescriptor()
+                .withTitle("Working Directory")
+                .withDescription("Leave blank to use the script's directory"),
         )
     }
     private val interpreterField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Magma Interpreter",
-            "Leave blank to use the path from Settings → Tools → Magma",
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor(),
+            FileChooserDescriptorFactory.createSingleFileDescriptor()
+                .withTitle("Magma Interpreter")
+                .withDescription("Leave blank to use the path from Settings → Tools → Magma"),
         )
     }
     private val wslCombo: JComboBox<String> = JComboBox<String>().apply {
@@ -50,12 +47,11 @@ class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<Magm
     private val threadsField = JBTextField()
     private val seedField = JBTextField()
     private val startupFileField = TextFieldWithBrowseButton().apply {
-        @Suppress("DEPRECATION")
         addBrowseFolderListener(
-            "Magma Startup File",
-            "Magma script to run before user code (-s)",
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor(),
+            FileChooserDescriptorFactory.createSingleFileDescriptor()
+                .withTitle("Magma Startup File")
+                .withDescription("Magma script to run before user code (-s)"),
         )
     }
     private val ignoreStartupBox = JBCheckBox("Ignore startup file (-n)")
