@@ -47,6 +47,17 @@ intellijPlatform {
     publishing {
         token = providers.environmentVariable("PUBLISH_TOKEN")
     }
+
+    pluginVerification {
+        // Default would verify against ~8 IDE versions in parallel, which
+        // routinely hits the IntelliJ Plugin Verifier's known JAR-cache
+        // race condition (ClosedByInterruptException across worker
+        // threads). recommended() picks a small curated subset — usually
+        // the lowest supported build, latest stable, and one intermediate.
+        ides {
+            recommended()
+        }
+    }
 }
 
 tasks {
