@@ -1,6 +1,6 @@
 # IntelliJ Magma
 
-IntelliJ IDEA plugin for the [Magma](http://magma.maths.usyd.edu.au/magma/)
+IntelliJ IDEA plugin for the [Magma](https://magma.maths.usyd.edu.au/magma/)
 computer algebra system. Ported from the
 [vscode-magma](https://github.com/etairi/vscode-magma) extension by Erkan Tairi.
 

@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.renpe.intellij.magma</id>
+    <id>com.renpe.magma</id>
     <name>Magma</name>
     <vendor email="" url="https://github.com/renpe/intellij-magma">René Peschmann</vendor>
     <change-notes><![CDATA[
@@ -13,7 +13,7 @@
     ]]></change-notes>
 
     <description><![CDATA[
-        Language support for the <a href="http://magma.maths.usyd.edu.au/magma/">Magma</a>
+        Language support for the <a href="https://magma.maths.usyd.edu.au/magma/">Magma</a>
         computer algebra system in IntelliJ-based IDEs.<br>
         <ul>
             <li>Syntax highlighting for <code>.m</code>, <code>.mag</code>, <code>.magma</code> and <code>.spec</code> files</li>
