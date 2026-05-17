@@ -21,6 +21,26 @@ computer algebra system. Ported from the
   `im`, `lo`, `log`/`ulog`, `vt`/`vp`
 - Dedicated color scheme entries under
   *Settings → Editor → Color Scheme → Magma*
+- Run Magma scripts from the editor — gutter play icon, *Run 'script.m'* in
+  the context menu, and a dedicated **Magma** run configuration type
+
+## Running Magma scripts
+
+1. Open *Settings → Tools → Magma* and set the path to the `magma` binary.
+   Default interpreter options (`-b` for batch mode) can be tweaked there too.
+2. Open any `.m` / `.mag` / `.magma` file and click the green ▶ in the gutter,
+   or right-click the file → *Run 'script.m'*.
+3. The first run creates a **Magma** run configuration that you can refine via
+   *Run → Edit Configurations…* (script arguments, working directory,
+   interpreter override, stdin mode, WSL distribution).
+
+### WSL (Windows)
+
+If `magma` lives inside a WSL distribution, set the global Magma settings (or
+the run-configuration-level override) to the **WSL-side** interpreter path,
+e.g. `/usr/local/bin/magma`, and pick the distribution from the dropdown.
+Windows script paths (e.g. `C:\…\script.m`) are translated to `/mnt/c/…`
+automatically and the process is launched via the WSL platform integration.
 
 ## Build
 
