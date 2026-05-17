@@ -1,0 +1,71 @@
+<idea-plugin>
+    <id>com.renpe.intellij.magma</id>
+    <name>Magma</name>
+    <vendor email="" url="https://github.com/renpe/intellij-magma">René Peschmann</vendor>
+    <change-notes><![CDATA[
+        <h3>1.0.0</h3>
+        <ul>
+            <li>Initial release.</li>
+            <li>Syntax highlighting, brace matching, line/block comments.</li>
+            <li>Live templates for the most common Magma constructs.</li>
+            <li>Color settings page.</li>
+        </ul>
+    ]]></change-notes>
+
+    <description><![CDATA[
+        Language support for the <a href="http://magma.maths.usyd.edu.au/magma/">Magma</a>
+        computer algebra system in IntelliJ-based IDEs.<br>
+        <ul>
+            <li>Syntax highlighting for <code>.m</code>, <code>.mag</code>, <code>.magma</code> and <code>.spec</code> files</li>
+            <li>Brace matching and line/block comment support</li>
+            <li>Live templates for common Magma constructs (function, procedure, intrinsic, …)</li>
+        </ul>
+        <p><b>Disclaimer:</b> This is an unofficial, community-maintained plugin and is
+        <b>not affiliated with, endorsed by, or developed by</b> the Magma Computational
+        Algebra Group at the University of Sydney. <i>Magma</i> is a trademark of its
+        respective owners.</p>
+        Licensed under the Apache License 2.0.<br>
+        Portions ported from the <a href="https://github.com/etairi/vscode-magma">vscode-magma</a>
+        Visual Studio Code extension by Erkan Tairi (MIT-licensed).
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- File types -->
+        <fileType
+            name="Magma"
+            implementationClass="com.renpe.intellij.magma.lang.MagmaFileType"
+            fieldName="INSTANCE"
+            language="Magma"
+            extensions="m;mag;magma;magmarc;magmarc-dev"/>
+        <fileType
+            name="Magma Spec"
+            implementationClass="com.renpe.intellij.magma.spec.SpecFileType"
+            fieldName="INSTANCE"
+            language="MagmaSpec"
+            extensions="spec"/>
+
+        <!-- Syntax highlighting -->
+        <lang.syntaxHighlighterFactory
+            language="Magma"
+            implementationClass="com.renpe.intellij.magma.highlight.MagmaSyntaxHighlighterFactory"/>
+        <lang.syntaxHighlighterFactory
+            language="MagmaSpec"
+            implementationClass="com.renpe.intellij.magma.spec.SpecSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="com.renpe.intellij.magma.highlight.MagmaColorSettingsPage"/>
+
+        <!-- Commenter -->
+        <lang.commenter language="Magma" implementationClass="com.renpe.intellij.magma.lang.MagmaCommenter"/>
+        <lang.commenter language="MagmaSpec" implementationClass="com.renpe.intellij.magma.spec.SpecCommenter"/>
+
+        <!-- Brace matching -->
+        <lang.braceMatcher language="Magma" implementationClass="com.renpe.intellij.magma.brace.MagmaBraceMatcher"/>
+
+        <!-- Live templates -->
+        <defaultLiveTemplates file="liveTemplates/Magma.xml"/>
+        <liveTemplateContext
+            contextId="MAGMA_CODE"
+            implementation="com.renpe.intellij.magma.template.MagmaTemplateContextType"/>
+    </extensions>
+</idea-plugin>

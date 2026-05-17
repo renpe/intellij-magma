@@ -1,0 +1,241 @@
+<templateSet group="Magma">
+
+    <template name="as" value="assert $COND$;" description="Assert" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="as2" value="assert2 $COND$;" description="Assert2" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="as3" value="assert3 $COND$;" description="Assert3" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="bp" value="error &quot;Breakpoint&quot;;&#10;" description="Create Breakpoint" toReformat="false" toShortenFQNames="false">
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="case" value="case $EXPR$ :&#10;    when $VALUE$ : $BODY$;&#10;    else : $ELSE_BODY$;&#10;end case;"
+              description="Case Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <variable name="ELSE_BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="cgp" value="$G$&lt;$GENS$&gt; := Group&lt;$GENS$ | $RELS$&gt;;"
+              description="Create Group (Presentation)" toReformat="false" toShortenFQNames="false">
+        <variable name="G" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="GENS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="RELS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="dm" value="printf &quot;$NAME$: %m\n&quot;, $NAME$;" description="Debug Print Magma Statement"
+              toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="dp" value="printf &quot;$NAME$: %o\n&quot;, $NAME$;" description="Debug Print Statement"
+              toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="e" value="error &quot;$MSG$&quot;;&#10;" description="Error" toReformat="false" toShortenFQNames="false">
+        <variable name="MSG" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="ef" value="error if $COND$ : &quot;$MSG$&quot;;" description="Error If"
+              toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="MSG" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="ei" value="end if;$END$" description="End If Statement" toReformat="false" toShortenFQNames="false">
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="for" value="for $RANGE$ do&#10;    $BODY$&#10;end for;"
+              description="For Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="RANGE" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="func" value="$NAME$ := function($PARAMS$)&#10;    $BODY$&#10;end function;"
+              description="Create Function" toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="&quot;function_name&quot;" alwaysStopAt="true"/>
+        <variable name="PARAMS" expression="" defaultValue="&quot;params&quot;" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="concat(&quot;/* TODO: implement &quot;, NAME, &quot; */&quot;)" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="gp"
+              value="$P$ := $KIND$Process($ARGS$);&#10;repeat&#10;    $G$ := Current($P$);&#10;    $BODY$&#10;    Advance(~$P$);&#10;until IsEmpty($P$);"
+              description="Small Group Process" toReformat="false" toShortenFQNames="false">
+        <variable name="P" expression="" defaultValue="&quot;P&quot;" alwaysStopAt="true"/>
+        <variable name="KIND" expression="enum(&quot;SmallGroup&quot;, &quot;TransitiveGroup&quot;)"
+                  defaultValue="&quot;SmallGroup&quot;" alwaysStopAt="true"/>
+        <variable name="ARGS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="G" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="hom" value="$H$ := hom&lt; $G1$-&gt;$G2$ | $MAP$ &gt;;"
+              description="Homomorphism" toReformat="false" toShortenFQNames="false">
+        <variable name="H" expression="" defaultValue="&quot;h&quot;" alwaysStopAt="true"/>
+        <variable name="G1" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="G2" expression="" defaultValue="&quot;H&quot;" alwaysStopAt="true"/>
+        <variable name="MAP" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="if" value="if $COND$ then&#10;    $BODY$&#10;end if;"
+              description="If Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="ifl" value="if $COND$ then $BODY$ end if;"
+              description="If Statement (line)" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="ife" value="if $COND$ then&#10;    $THEN_BODY$&#10;else&#10;    $ELSE_BODY$&#10;end if;"
+              description="If-Else Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="THEN_BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <variable name="ELSE_BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="im" value="import &quot;$PATH$&quot;;" description="Import" toReformat="false" toShortenFQNames="false">
+        <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="intr"
+              value="intrinsic $NAME$ ( $PARAMS$ )&#10;{$DOC$}&#10;    $BODY$&#10;end intrinsic;"
+              description="Create Intrinsic" toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="&quot;function_name&quot;" alwaysStopAt="true"/>
+        <variable name="PARAMS" expression="" defaultValue="&quot;params&quot;" alwaysStopAt="true"/>
+        <variable name="DOC" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="concat(&quot;/* TODO: implement &quot;, NAME, &quot; */&quot;)" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="lo" value="load &quot;$PATH$&quot;;" description="Load" toReformat="false" toShortenFQNames="false">
+        <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="log" value="SetLogFile(&quot;$PATH$&quot;);" description="Set Log File"
+              toReformat="false" toShortenFQNames="false">
+        <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="p" value="print &quot;$TEXT$&quot;;" description="Print" toReformat="false" toShortenFQNames="false">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="pr" value="phi_$NAME$, R_$NAME$ := PermutationRepresentation($NAME$);"
+              description="Permutation Representation" toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="proc" value="$NAME$ := procedure($PARAMS$)&#10;    $BODY$&#10;end procedure;"
+              description="Create Procedure" toReformat="false" toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="&quot;procedure_name&quot;" alwaysStopAt="true"/>
+        <variable name="PARAMS" expression="" defaultValue="&quot;params&quot;" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="concat(&quot;/* TODO: implement &quot;, NAME, &quot; */&quot;)" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="q" value="$Q$, $M$ := quo&lt; $G$ | $RELS$ &gt;;"
+              description="Quotient" toReformat="false" toShortenFQNames="false">
+        <variable name="Q" expression="" defaultValue="&quot;Q&quot;" alwaysStopAt="true"/>
+        <variable name="M" expression="" defaultValue="&quot;m&quot;" alwaysStopAt="true"/>
+        <variable name="G" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="RELS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="rec" value="rec &lt; $FORMAT$ | $VARS$ &gt;;$END$"
+              description="Record" toReformat="false" toShortenFQNames="false">
+        <variable name="FORMAT" expression="" defaultValue="&quot;/* format */&quot;" alwaysStopAt="true"/>
+        <variable name="VARS" expression="" defaultValue="&quot;/* variables */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="recformat" value="recformat &lt; $PARAMS$ &gt;;$END$"
+              description="Record Format" toReformat="false" toShortenFQNames="false">
+        <variable name="PARAMS" expression="" defaultValue="&quot;/* params */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="repeat" value="repeat&#10;    $BODY$&#10;until $COND$;"
+              description="Repeat Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="sub" value="$H$ := sub&lt; $G$ | $GENS$ &gt;;"
+              description="Subgroup" toReformat="false" toShortenFQNames="false">
+        <variable name="H" expression="" defaultValue="&quot;H&quot;" alwaysStopAt="true"/>
+        <variable name="G" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="GENS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="sy" value="$S$ := Sylow($G$, $P$);"
+              description="Sylow Subgroup" toReformat="false" toShortenFQNames="false">
+        <variable name="S" expression="" defaultValue="&quot;S&quot;" alwaysStopAt="true"/>
+        <variable name="G" expression="" defaultValue="&quot;G&quot;" alwaysStopAt="true"/>
+        <variable name="P" expression="" defaultValue="&quot;2&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="ulog" value="UnsetLogFile();" description="Unset Log File"
+              toReformat="false" toShortenFQNames="false">
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="vp" value="vprint $FLAG$ : &quot;$TEXT$&quot;;"
+              description="Verbose Print" toReformat="false" toShortenFQNames="false">
+        <variable name="FLAG" expression="" defaultValue="&quot;/* verbose flag */&quot;" alwaysStopAt="true"/>
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="vt" value="vtime $FLAG$ : $EXPR$;"
+              description="Verbose Time" toReformat="false" toShortenFQNames="false">
+        <variable name="FLAG" expression="" defaultValue="&quot;/* verbose flag */&quot;" alwaysStopAt="true"/>
+        <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+    <template name="while" value="while $COND$ do&#10;    $BODY$&#10;end while;"
+              description="While Statement" toReformat="false" toShortenFQNames="false">
+        <variable name="COND" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="BODY" expression="" defaultValue="&quot;/* TODO: implement */&quot;" alwaysStopAt="true"/>
+        <context><option name="MAGMA_CODE" value="true"/></context>
+    </template>
+
+</templateSet>
