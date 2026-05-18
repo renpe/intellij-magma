@@ -18,7 +18,7 @@ class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<Magm
     private val scriptField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor()
+            FileChooserDescriptorFactory.singleFile()
                 .withTitle("Magma Script")
                 .withDescription("Select the .m / .mag / .magma file to run"),
         )
@@ -27,7 +27,7 @@ class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<Magm
     private val workingDirField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             project,
-            FileChooserDescriptorFactory.createSingleFolderDescriptor()
+            FileChooserDescriptorFactory.singleDir()
                 .withTitle("Working Directory")
                 .withDescription("Leave blank to use the script's directory"),
         )
@@ -35,7 +35,7 @@ class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<Magm
     private val interpreterField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor()
+            FileChooserDescriptorFactory.singleFile()
                 .withTitle("Magma Interpreter")
                 .withDescription("Leave blank to use the path from Settings → Tools → Magma"),
         )
@@ -49,7 +49,7 @@ class MagmaRunSettingsEditor(private val project: Project) : SettingsEditor<Magm
     private val startupFileField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             project,
-            FileChooserDescriptorFactory.createSingleFileDescriptor()
+            FileChooserDescriptorFactory.singleFile()
                 .withTitle("Magma Startup File")
                 .withDescription("Magma script to run before user code (-s)"),
         )

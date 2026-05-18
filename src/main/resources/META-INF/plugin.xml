@@ -3,57 +3,18 @@
     <name>Magma</name>
     <vendor email="" url="https://github.com/renpe/intellij-magma">René Peschmann</vendor>
     <change-notes><![CDATA[
-        <h3>1.2.3</h3>
-        <ul>
-            <li>Raise the minimum supported IDE build to 2024.3 (243). The
-                non-deprecated <code>addBrowseFolderListener</code> overload
-                introduced in 1.2.2 does not exist on 2024.1/2024.2, which
-                made 1.2.2 binary-incompatible there. 2024.3+ users are
-                unaffected.</li>
-        </ul>
-        <h3>1.2.2</h3>
-        <ul>
-            <li>Migrate file/folder browse fields off the
-                <code>addBrowseFolderListener</code> overload that is scheduled
-                for removal in 2026.2; titles and descriptions are now carried
-                by the <code>FileChooserDescriptor</code> itself.</li>
-        </ul>
-        <h3>1.2.1</h3>
-        <ul>
-            <li>Gutter <i>Run</i> marker no longer recomputes the leaf walk on
-                every PSI element &mdash; large Magma files stay responsive.</li>
-            <li>WSL kill path uses <code>ProcessBuilder</code> with discarded
-                stdio so it can&rsquo;t deadlock on a full pipe buffer, and now
-                briefly polls for the PID file so a very fast Stop doesn&rsquo;t
-                leak the magma process.</li>
-            <li>Hardened the WSL wrapper script with <code>set -C</code> to
-                block symlink races on <code>/tmp</code>.</li>
-            <li>Sweep stale <code>magma-runner-*.sh</code> wrapper files from
-                <code>%TEMP%</code> on first run after an IDE crash.</li>
-            <li>Early validation for threads, seed and memory limit in both
-                global and per-run settings dialogs.</li>
-            <li>Run-tool-window command line escapes embedded quotes and
-                backslashes correctly.</li>
-        </ul>
-        <h3>1.2.0</h3>
-        <ul>
-            <li>Run-configuration UI redesigned around Magma's actual CLI flags:
-                Threads (<code>-t</code>), Random seed (<code>-S</code>),
-                Startup file (<code>-s</code>, <code>-n</code>), Memory limit
-                (<code>MAGMA_MEMORY_LIMIT</code>, accepts <code>2G</code> /
-                <code>512M</code> / …), Extra arguments.</li>
-            <li><code>-b</code> is now always set internally; the option is gone.</li>
-            <li>Field descriptions moved below their inputs.</li>
-            <li>Reliable Stop in WSL: bypass IJent on the EDT, kill via PID file.</li>
-        </ul>
         <h3>1.1.0</h3>
         <ul>
             <li>Run Magma scripts from the IDE: dedicated run configuration type,
                 gutter <i>Run</i> action, and right-click <i>Run 'script.m'</i>.</li>
             <li>WSL support on Windows: pick a distribution and the plugin
-                converts host paths and runs <code>magma</code> inside WSL.</li>
-            <li>Global Magma settings under <i>Settings → Tools → Magma</i>
-                (interpreter path, default options, default WSL distribution).</li>
+                translates host paths and runs <code>magma</code> inside WSL,
+                including reliable Stop.</li>
+            <li>Run-configuration options for Magma's CLI flags &mdash; threads
+                (<code>-t</code>), random seed (<code>-S</code>), startup file
+                (<code>-s</code> / <code>-n</code>), <code>MAGMA_MEMORY_LIMIT</code>
+                (accepts <code>2G</code>, <code>512M</code>, …), extra arguments.</li>
+            <li>Global Magma settings under <i>Settings &rarr; Tools &rarr; Magma</i>.</li>
         </ul>
         <h3>1.0.0</h3>
         <ul>

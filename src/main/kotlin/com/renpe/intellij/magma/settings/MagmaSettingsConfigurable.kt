@@ -18,7 +18,7 @@ class MagmaSettingsConfigurable : Configurable {
     private val interpreterField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             null,
-            FileChooserDescriptorFactory.createSingleFileDescriptor()
+            FileChooserDescriptorFactory.singleFile()
                 .withTitle("Select Magma Executable")
                 .withDescription("Path to the magma binary"),
         )
@@ -32,7 +32,7 @@ class MagmaSettingsConfigurable : Configurable {
     private val startupFileField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             null,
-            FileChooserDescriptorFactory.createSingleFileDescriptor()
+            FileChooserDescriptorFactory.singleFile()
                 .withTitle("Select Magma Startup File")
                 .withDescription("Magma script to run before user code (-s)"),
         )
